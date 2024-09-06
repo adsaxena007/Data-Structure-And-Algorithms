@@ -27,8 +27,8 @@ public class _81_PopulatingNextRightPointersInEachNodeII {
         }
 
 
-        connect(root.left);
         connect(root.right);
+        connect(root.left);
 
         return root;
     }
