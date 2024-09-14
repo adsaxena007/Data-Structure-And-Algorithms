@@ -1,0 +1,40 @@
+GRAPH:
+                N1 ---- N2
+                |       |
+                |       |
+                |       |
+                N3 ---- N4
+                |       |
+                |       |
+                |       |
+                |       |
+                ----N5---
+
+Input:
+    n - no of nodes
+    m - no of edges
+
+How to store Graph:
+    1) Adjacency Matrix
+            we can mark 1 for every matrix[i][j] when there is an edge between i and j node
+            we mark 0 for every matrix[i][j] when there is no edge between i and j node
+
+            0 1 2 3 4 5
+           0
+           1    1
+           2  1
+           3  1
+           4    1 1   1
+           5    1   1
+
+           else with zero
+           space required. - n*n
+
+    2) Adjacency List
+            ArrayList<ArrayList<i>>
+            arr = [[],[2,3],[1,4],[1,4,5],[3,5],[3,4]]
+            arr[1] = [2,3]
+            arr[2] = [1,4]
+            arr[3] = [1,4,5]
+            arr[4] = [3,5]
+            arr[5] = [3,4]

@@ -1,0 +1,54 @@
+A
+                N1 ---- N2
+                |       |
+                |       |
+                |       |
+                N3 ---- N4
+
+B
+                N5 ---- N6
+                |       |
+                |       |
+                |       |
+                |       |
+                ----N7---
+
+C
+                N8 ----- N9
+
+D
+                N10
+
+You can say these are 4 different graphs, it is correct
+
+But what if the question says
+    given a graph with 10 nodes an 8 edges between them as shown above. traverse the graph.
+
+    A B C D will be the components of graph.
+    so to traverse every node of graph we take a visited array of N+1 length always
+
+
+    Visited = [0,0,0,0,0,0,0,0,0,0,0]
+    we start from Visited[1]
+    for(int i=1;i<=n;i++{
+        if(Visited[i] == 0)
+               traverse(i);
+        i++;
+    }
+
+    when we traverse i = 1
+        Component A will be traversed
+        Visited = [0,1,1,1,1,0,0,0,0,0,0]
+
+        Visited[1],Visited[2],Visited[3],Visited[4] will be marked as 1
+        That is we have visited the N1,N2,N3,N4
+
+
+    when we traverse i = 5
+            Component B will be traversed
+
+    when we traverse i = 8
+                Component C will be traversed
+
+    when we traverse i = 10
+                Component D will be traversed

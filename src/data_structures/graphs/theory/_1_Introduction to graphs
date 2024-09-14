@@ -1,0 +1,109 @@
+
+Types Of Graphs:
+
+    1) Undirected Graph
+                N1 ---- N2
+                |       |
+                |       |
+                |       |
+                N3 ---- N4
+                |       |
+                |       |
+                |       |
+                |       |
+                N5 ____ N6
+                |       |
+                |       |
+                |       |
+                |       |
+                ----N7---
+
+                N1,N2,....N7 are Nodes or Vertex
+                No of nodes - 7
+
+                Every node is connected by a line which is called an edge
+
+                An undirected graph represents that an edge can be there in both directions
+
+                Here we can go from N1 to N2 and N2 to N1
+
+                Undirected graph means an edge is bi directional
+
+
+    2) Directed Graph
+                N1 ---> N2
+                |       ^
+                |       |
+                |       |
+                V       |
+                N3 ---> N4
+                |  <--- ^
+                |       |
+                |       |
+                V       |
+                N5      N6
+                ^       ^
+                |       |
+                |       |
+                |       |
+                ----N7---
+
+                N1,N2,....N7 are Nodes or Vertex
+                No of nodes - 7
+
+                Every node is connected by a line which is called an edge
+
+                An directed graph represents that an edge can be there in one direction only
+
+                Here we can go from N1 to N2
+
+                Directed graph means an edge is in one direction only
+
+                We can have another edge to go backwards Like in N3 to N4 and N4 to N3
+
+
+Cycles in Graph:
+    Cycle means if we start from a node and ends ups again at that node by following some path then it means there is a cycle in a graph
+    A graph can or cannot have a cycle.
+                    N1 ---> N2
+                    |       ^
+                    |       |
+                    |       |
+                    V       |
+                    N3 ---> N4
+
+                    N1 ---> N2
+                    |
+                    |
+                    V
+                    N3 ---> N4
+
+    graph designed above have cycle
+    but a tree is also a graph which do not have a cycle
+
+
+Degree of a node in graph:
+    Degree of a node in undirected graph
+        is equal to the number of edges attached to a node.
+                    N1 ---- N2
+                    |       |
+                    |       |
+                    |       |
+                    N3 ---- N4
+
+        Here every node has a degree of 2
+
+        Total degree of a graph = 2 * number of edges. (as every edge is connected to 2 nodes)
+
+
+    Degree of a node in Directed graph:
+        in Directed graph we have two types of degree
+            1) In-degree of node:
+                    it is the number of incoming edges
+
+            2) Out-Degree of node:
+                    it is the number of out-coming edges
+
+Edge Weight:
+    Every edge can have a weight
+    if weight is not gives we assume edge weight as 1

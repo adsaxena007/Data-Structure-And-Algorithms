@@ -1,7 +1,7 @@
-package data_structures.binary_tree.traversals;
+package data_structures.trees.binary_tree.traversals;
 
-import data_structures.binary_tree.BinaryTree;
-import data_structures.binary_tree.Node;
+import data_structures.trees.binary_tree.BinaryTree;
+import data_structures.trees.binary_tree.Node;
 
 public class PreOrderTraversal {
 
