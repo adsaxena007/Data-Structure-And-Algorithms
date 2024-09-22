@@ -3,67 +3,71 @@ package leet_code.top_150_interview_questions._13_Trie;
 import java.util.*;
 
 public class _104_WordSearch2 {
-    TrieNode [][] graph;
-    Map<Character, List<TrieNode>> map;
-    Integer [][] visited;
+    Map<Character, TrieNode> map;
+    Map<Character, Integer> count;
+    int [] letterCount;
+
     public boolean search(TrieNode root, char[] word, int i) {
-        if( root == null || ( i >= word.length) || visited[root.i][root.j] != null){
+        if( root == null || ( i >= word.length) ){
             return false;
         }
 
-        visited[root.i][root.j] = 1;
+        letterCount[word[i]-'a']++;
 
-        if(i == word.length-1 && root.child[word[i]-'a'] != null && visited[root.child[word[i]-'a'].i][root.child[word[i]-'a'].j] == null)
+        if(letterCount[word[i]-'a'] > count.getOrDefault(word[i],-1)){
+            return false;
+        }
+
+        if(i == word.length-1 && root.child[word[i]-'a'] != null)
             return true;
 
         if(root.child[word[i]-'a'] == null)
             return false;
 
-
         return search(root.child[word[i]-'a'], word, i+1);
     }
 
+
     public List<String> findWords(char[][] board, String[] words) {
-        List<String> result = new ArrayList<>();
+        if(words.length==0)
+            return new ArrayList<>();
+
+        map = new HashMap<>();
+        count = new HashMap<>();
         int m = board.length;
         int n = board[0].length;
-        graph  = new TrieNode[m][n];
-        map = new HashMap<>();
 
-        for(int i=0;i<m;i++){
+        for(int i =0; i<m; i++){
             for(int j=0;j<n;j++){
-                if(graph[i][j] == null)
-                    graph[i][j] = new TrieNode(board[i][j],i,j);
-
-                List<TrieNode> list = map.getOrDefault(board[i][j], new ArrayList<>());
-                list.add(graph[i][j]);
-                map.put(board[i][j], list);
-
+                TrieNode node = map.getOrDefault(board[i][j], new TrieNode());
+                count.put( board[i][j] , count.getOrDefault(board[i][j],0) + 1 );
+                map.put(board[i][j], node);
                 if(j+1<n){
-                    if(graph[i][j+1] == null)
-                        graph[i][j+1] = new TrieNode(board[i][j+1],i,j+1);
-                    graph[i][j].child[board[i][j+1] - 'a'] = graph[i][j+1];
+                    TrieNode node2 = map.getOrDefault(board[i][j+1], new TrieNode());
+                    map.put(board[i][j+1], node2);
+                    node.child[board[i][j+1] - 'a'] = node2;
                 }
 
                 if(j-1>=0){
-                    if(graph[i][j-1] == null)
-                        graph[i][j-1] = new TrieNode(board[i][j-1],i,j-1);
-                    graph[i][j].child[board[i][j-1] - 'a'] = graph[i][j-1];
+                    TrieNode node2 = map.getOrDefault(board[i][j-1], new TrieNode());
+                    map.put(board[i][j-1], node2);
+                    node.child[board[i][j-1] - 'a'] = node2;
                 }
 
                 if(i-1>=0){
-                    if(graph[i-1][j] == null)
-                        graph[i-1][j] = new TrieNode(board[i-1][j],i-1,j);
-                    graph[i][j].child[board[i-1][j] - 'a'] = graph[i-1][j];
+                    TrieNode node2 = map.getOrDefault(board[i-1][j], new TrieNode());
+                    map.put(board[i-1][j], node2);
+                    node.child[board[i-1][j] - 'a'] = node2;
                 }
 
                 if(i+1<m){
-                    if(graph[i+1][j] == null)
-                        graph[i+1][j] = new TrieNode(board[i+1][j],i+1,j);
-                    graph[i][j].child[board[i+1][j] - 'a'] = graph[i+1][j];
+                    TrieNode node2 = map.getOrDefault(board[i+1][j], new TrieNode());
+                    map.put(board[i+1][j], node2);
+                    node.child[board[i+1][j] - 'a'] = node2;
                 }
             }
         }
+        List<String> result = new ArrayList<>();
         for(String word : words){
             char [] str = word.toCharArray();
             if(str.length == 1 && map.containsKey(str[0])){
@@ -72,18 +76,13 @@ public class _104_WordSearch2 {
             }
 
             if(map.containsKey(str[0])){
-                List<TrieNode> list = map.get(str[0]);
-                for(TrieNode t : list){
-                    visited = new Integer[m][n];
-                    boolean isPresent = search(t, str, 1);
-                    if(isPresent){
-                        result.add(word);
-                        break;
-                    }
-                }
+                letterCount = new int[26];
+                letterCount[str[0] - 'a']++;
+                boolean isPresent = search(map.get(str[0]), str, 1);
+                if(isPresent)
+                    result.add(word);
             }
         }
-
         return result;
     }
 
