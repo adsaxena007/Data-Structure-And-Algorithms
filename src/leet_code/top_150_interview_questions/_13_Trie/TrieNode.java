@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
+
 public class TrieNode {
     char val;
     boolean wordEnd;
@@ -15,6 +16,12 @@ public class TrieNode {
     int j;
 
     public TrieNode(){
+        child = new TrieNode[26];
+        wordEnd=false;
+    }
+
+    public TrieNode(char val){
+        this.val = val;
         child = new TrieNode[26];
         wordEnd=false;
     }
