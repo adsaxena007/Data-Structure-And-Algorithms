@@ -1,0 +1,30 @@
+What is a TRIE Data Structure:
+
+The Trie data structure is a tree-like data structure used for storing a dynamic set of strings.
+
+It is commonly used for efficient retrieval and storage of keys in a large dataset.
+
+The structure supports operations such as insertion, search, and deletion of keys, making it a valuable tool in fields like computer science and information retrieval.
+
+    we have words such as
+        Apple
+        apps
+        bac
+        bat
+
+    assuming all characters are lower case
+
+    Trie class node looks like this.
+
+    Trie{
+        Trie a[26];
+        boolean flag;
+    }
+
+    their will always be a root
+
+
+Common Operations:
+    Insertion
+    Search
+    StartsWith
