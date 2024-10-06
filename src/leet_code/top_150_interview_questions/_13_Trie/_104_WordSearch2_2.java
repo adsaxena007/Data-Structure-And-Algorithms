@@ -35,7 +35,6 @@ public class _104_WordSearch2_2 {
             root = root.child[board[i][j]-'a'];
             sb.append(board[i][j]);
 
-
             if(root.wordEnd && !result.contains(sb.toString())){
                 result.add(sb.toString());
             }
